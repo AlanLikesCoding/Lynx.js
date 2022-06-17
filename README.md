@@ -4,10 +4,10 @@ Lynx.js is a lightweight ⚖️, and speedy ⚡️ Node.js library for building 
 
 ## Installation
 
-Currently, there isn't a easy solution for installing, and although we do plan on making an NPM package 📦, it's not yet ready for public use. We apologize for the inconvenience 😔, but as for now, you'll need to install Lynx.js manually 🧑‍💻 using `git clone`.
+We have finally made an NPM package 📦 for you to install Lynx.js. To do the following, run the `npm install` command like so 😀:
 
 ```bash
-git clone https://github.com/AlanLikesCoding/Lynx.js.git
+npm install lynx-server
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ Currently, proper documentation has not been made 📄, althought it would be ap
 Before we begin to build a wonderful🎉 website with Lynx.js, we will first have to configure our server. To do so, we will need to import the `Server` class. Next, we will initialize the Server class with a config object. Currently, our config object only has one property, `port`, which is the port that our server will listen on. But this will change in the future. Finally, to start the server, we can call the `run` method on our Server instance.
 
 ```js
-const Server = require('Lynx.js');
+const { Server } = require('lynx-server');
 
 const app = new Server({
   port: 3000,
@@ -34,7 +34,7 @@ To serve a route using Lynx.js, we will call a method on our Server instance. Th
 Below is an example of what you can do with these methods.
 
 ```js
-const Server = require('Lynx.js');
+const { Server } = require('lynx-server');
 
 const app = new Server({
    port: 3000,
@@ -66,7 +66,7 @@ app.run();
 
 To serve a static directory, you use the `static` method of the Server instance, which takes one parameter, the path to the directory, like so.
 ```js
-const Server = require('Lynx.js');
+const { Server } = require('lynx-server');
 
 const app = new Server({
   port: 3000,
@@ -80,7 +80,7 @@ app.run();
 ### Middleware
 To use middleware, you use the `use` method of the Server instance, which takes one parameter, the middleware function.
 ```js
-const Server = require('Lynx.js');
+const { Server } = require('lynx-server');
 
 const app = new Server({
   port: 3000,
@@ -92,17 +92,16 @@ app.use((req, res) => {
 ```
 
 ### Request Body
-To get the parameters of a request, you can use the `body` method of the Request instance. But before that, you must include the body parsing middleware located in the directory `/src/server/middleware/body.js`.
-```js
-const Server = require('Lynx.js');
+To get the parameters of a request, you can use the `body` method of the Request instance. But before that, you must include the body parsing middleware named `BodyParser`, and you can include it along with the `Server` class like so:
 
-const bodyparser = require('Lynx.js/body-parser');
+```js
+const { Server, BodyParser } = require('lynx-server');
 
 const app = new Server({
   port: 3000,
 })
 
-app.use(bodyparser);
+app.use(BodyParser);
 
 app.get('/names', (req, res) => {
   const names = ['Bruce', 'Bob', 'Cindy'];
@@ -123,7 +122,7 @@ app.get('/names', (req, res) => {
 ```
 
 ### Request Cookies
-To get the cookies during a request, you must use the cookie parsing middleware. This middleware is located in the directory `/src/server/middleware/cookie.js`. Next you can get the cookies by using the cookie method from the request instance.
+To get the cookies during a request, you must use the cookie parsing middleware. This middleware named `CookieParser` and you can include it along with your `Server` through our NPM package 📦. Next you can get the cookies by using the cookie method from the request instance.
 ```js
 app.get('/cookie', (req, res) => {
   res.json({
@@ -163,4 +162,4 @@ Pull requests are welcome 🤗. For major changes, please open an issue first to
 
 
 ## Credits
-Special thanks to Azure, creator of [Azure.js](https://azure-js.com) for helping me come up with such a fabulous 💫 library name 😀🙏🙏!
+Special thanks to Azure, creator of [Azure.js](https://www.azure-js.com) for helping me come up with such a fabulous 💫 library name 😀🙏🙏!

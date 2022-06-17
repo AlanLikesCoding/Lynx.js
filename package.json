@@ -1,0 +1,30 @@
+{
+  "name": "lynx-server",
+  "version": "1.0.0",
+  "description": "Lynx.js is a lightweight ⚖️, and speedy ⚡️ Node.js library for building webservers 🌐. Using it, you easily use the built in modules of Node.js to its full potential 💫. Create APIs, build middleware, serve files, and more with Lynx.js.",
+  "main": "/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanLikesCoding/Lynx.js.git"
+  },
+  "keywords": [
+    "nodejs",
+    "webserver",
+    "library",
+    "speedy",
+    "lightweight",
+    "fast",
+    "middleware",
+    "api",
+    "files"
+  ],
+  "author": "Alan",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/AlanLikesCoding/Lynx.js/issues"
+  },
+  "homepage": "https://github.com/AlanLikesCoding/Lynx.js#readme"
+}

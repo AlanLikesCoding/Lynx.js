@@ -4,6 +4,9 @@ const url = require('url');
 const Response = require('./classes/response.js');
 const Request = require('./classes/request.js');
 
+const BodyParser = require('./middleware/body.js');
+const CookieParser = require('./middleware/cookie.js');
+
 class Server {
 	constructor(config) {
 		this.config = config;
@@ -109,4 +112,4 @@ class Server {
 	}
 }
 
-module.exports = Server;
+module.exports = { Server, BodyParser, CookieParser };
