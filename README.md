@@ -22,7 +22,7 @@ Before we begin to build a wonderful🎉 website with Lynx.js, we will first hav
 const Server = require('Lynx.js');
 
 const app = new Server({
-  port: 3000
+  port: 3000,
 });
 
 app.run();
@@ -37,7 +37,7 @@ Below is an example of what you can do with these methods.
 const Server = require('Lynx.js');
 
 const app = new Server({
-   port: 3000
+   port: 3000,
 });
 
 app.get('/', (req, res) => {
@@ -51,7 +51,7 @@ app.get('/file', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({
     name: 'Alan',
-    age: '21'
+    age: '21',
   }); // The method res.json is for sending JSON data.
   // Note: You can use req.body.[method] to get the body of the request.
 });
@@ -69,7 +69,7 @@ To serve a static directory, you use the `static` method of the Server instance,
 const Server = require('Lynx.js');
 
 const app = new Server({
-  port: 3000
+  port: 3000,
 });
 
 app.static('./static'); // The method app.static is for serving static directories.
@@ -83,11 +83,52 @@ To use middleware, you use the `use` method of the Server instance, which takes 
 const Server = require('Lynx.js');
 
 const app = new Server({
-  port: 3000
+  port: 3000,
 });
 
 app.use((req, res) => {
   console.log('Request received');
+});
+```
+
+### Request Body
+To get the parameters of a request, you can use the `body` method of the Request instance. But before that, you must include the body parsing middleware located in the directory `/src/server/middleware/body.js`.
+```js
+const Server = require('Lynx.js');
+
+const bodyparser = require('Lynx.js/body-parser');
+
+const app = new Server({
+  port: 3000,
+})
+
+app.use(bodyparser);
+
+app.get('/names', (req, res) => {
+  const names = ['Bruce', 'Bob', 'Cindy'];
+
+  for(let i = 0; i < names.length; i++) {
+    if(names[i] === req.body.name) {
+      res.json({
+        name: names[i],
+        found: true,
+      });
+    } 
+  }
+
+  res.json({
+    found: false,
+  });
+});
+```
+
+### Request Cookies
+To get the cookies during a request, you must use the cookie parsing middleware. This middleware is located in the directory `/src/server/middleware/cookie.js`. Next you can get the cookies by using the cookie method from the request instance.
+```js
+app.get('/cookie', (req, res) => {
+  res.json({
+    cookie: req.cookie,
+  });
 });
 ```
 
