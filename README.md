@@ -50,7 +50,7 @@ app.get('/file', (req, res) => {
 
 app.get('/api', (req, res) => {
   res.json({
-    name: 'Alan',
+    name: 'Joe',
     age: '21',
   }); // The method res.json is for sending JSON data.
   // Note: You can use req.body.[method] to get the body of the request.
@@ -160,3 +160,7 @@ Pull requests are welcome 🤗. For major changes, please open an issue first to
 ## License
 
 [LICENSE](LICENSE.txt)
+
+
+## Credits
+Special thanks to Azure, creator of [Azure.js](https://azure-js.com) for helping me come up with such a fabulous 💫 library name 😀🙏🙏!
